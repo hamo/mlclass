@@ -15,7 +15,16 @@ p = zeros(m, 1);
 %               You should set p to a vector of 0's and 1's
 %
 
+threshold = 0.5;
 
+p = sigmoid(X * theta);
+
+for i=1:m
+    if p(i, 1) < threshold
+        p(i, 1) = 0;
+    else
+        p(i, 1) = 1;
+end
 
 
 
