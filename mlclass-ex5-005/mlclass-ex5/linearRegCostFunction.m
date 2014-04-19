@@ -19,8 +19,18 @@ grad = zeros(size(theta));
 %               You should set J to the cost and grad to the gradient.
 %
 
+warning ("error", "Octave:broadcast");
 
+h = X * theta;
+J = sum((h - y) .^ 2) / 2 / m;
 
+temp = theta;
+temp(1) = 0;
+
+J = J + sum(temp .^ 2) * lambda / m / 2;
+
+grad = X' * (h - y) / m;
+grad = grad + temp * lambda / m;
 
 
 
