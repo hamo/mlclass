@@ -22,6 +22,18 @@ idx = zeros(size(X,1), 1);
 %
 
 
+for i=1:size(X,1)
+    dist=bitmax;
+    n=0;
+    for j=1:K
+        r=sum((X(i, :) - centroids(j, :)) .^ 2);
+        if (r < dist)
+           dist=r;
+           n=j;
+        end
+    end
+    idx(i) = n;
+end
 
 
 
